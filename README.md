@@ -164,7 +164,7 @@ Le but est de vérifier si certaines lignes du dataset sont présentes plusieurs
 ---
 
 ##  1. Vérification du nombre de doublons
-python
+```python
 # Nettoyage des doublons
 # =========================
 print("Nombre de doublons :", data.duplicated().sum())
@@ -175,7 +175,7 @@ data = data.drop_duplicates()
 # Vérification
 print("Nouvelle dimension du dataset :", data.shape)
 
-
+```
 
 #  Gestion des valeurs manquantes
 
@@ -184,7 +184,7 @@ L’objectif est de traiter les valeurs manquantes (NaN) dans le dataset afin de
 ---
 
 ##  1. Identification des colonnes numériques
-python
+```python
 # =========================
 #Gestion des valeurs manquantes
 # =========================
@@ -203,7 +203,7 @@ for col in categorical_cols:
 print("Valeurs manquantes par colonne après traitement :")
 print(data.isnull().sum())
 
-
+```
 
 #  Encodage des variables catégorielles
 
@@ -213,7 +213,7 @@ Il faut donc convertir les colonnes *catégorielles* en *valeurs numériques* à
 ---
 
 ##  1. Création d’un encodeur
-python
+```python
 # =========================
 #  Encodage des variables catégorielles
 # =========================
@@ -225,6 +225,7 @@ for col in categorical_cols:
 # Vérification
 data[categorical_cols].head()
 
+```
 
 #  Normalisation des colonnes numériques
 
@@ -237,14 +238,14 @@ Pour éviter qu’une variable domine les autres, on applique une *normalisation
 ---
 
 ##  1. Création d’un standardiseur
-python
+```python
 #  Normalisation des colonnes numériques
 # ===============================
 scaler = StandardScaler()
 data[numeric_cols] = scaler.fit_transform(data[numeric_cols])
 print(data[numeric_cols].head())
 
-
+```
 
 #  Exemple : Classification pour prédire le statut de conservation
 
@@ -253,7 +254,7 @@ L’objectif de cette étape est de préparer les données pour un modèle de *c
 ---
 
 ##  1. Définition de la cible
-python
+```python
 # Exemple : classification pour prédire le statut de conservation
 target_col = 'Conservation Status'
 X = data.drop(target_col, axis=1)
@@ -263,6 +264,7 @@ y = data[target_col]
 print("X shape :", X.shape)
 print("y shape :", y.shape)
 
+```
 
 #  Séparation des données : Train/Test
 
@@ -273,7 +275,7 @@ L’objectif est de diviser le jeu de données en deux parties :
 ---
 
 ##  Code utilisé
-python
+```python
 from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(
@@ -283,6 +285,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 print("X_train :", X_train.shape, "X_test :", X_test.shape)
 print("y_train :", y_train.shape, "y_test :", y_test.shape)
 
+```
 
 #  Entraînement d'un modèle Random Forest
 
@@ -291,7 +294,7 @@ L'objectif est de créer un modèle de *classification* pour prédire le statut 
 ---
 
 ##  Code utilisé
-python
+```python
 from sklearn.ensemble import RandomForestClassifier
 
 rf = RandomForestClassifier(random_state=42)
@@ -300,7 +303,7 @@ rf.fit(X_train, y_train)
 # Prédictions
 y_pred = rf.predict(X_test)
 
-
+```
 
 #  Évaluation du modèle Random Forest
 
@@ -309,7 +312,7 @@ Après l'entraînement et les prédictions, il est crucial de *mesurer la perfor
 ---
 
 ##  Code utilisé
-python
+```python
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -329,6 +332,7 @@ plt.ylabel("Actual")
 plt.title("Matrice de confusion - Random Forest")
 plt.show()
 
+```
 
 <img src="image01.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
@@ -342,7 +346,7 @@ Après l'entraînement d'un modèle Random Forest, il est possible d'identifier 
 ---
 
 ##  Code utilisé
-python
+```python
 importances = rf.feature_importances_
 features = X_train.columns
 
@@ -353,6 +357,7 @@ plt.xlabel("Importance")
 plt.ylabel("Variables")
 plt.show()
 
+```
 
 <img src="image02.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
@@ -365,7 +370,7 @@ Pour améliorer les performances du modèle Random Forest, nous utilisons *Rando
 ---
 
 ##  Code utilisé
-python
+```python
 from sklearn.model_selection import RandomizedSearchCV
 
 param_grid = {
@@ -392,7 +397,7 @@ print("Meilleurs paramètres :", random_search.best_params_)
 best_rf = random_search.best_estimator_
 y_pred_best = best_rf.predict(X_test)
 
-
+```
 
 
 #  Visualisation des distributions par statut de conservation
