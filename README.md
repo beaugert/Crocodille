@@ -552,9 +552,10 @@ shap.summary_plot(shap_values, X_test_reg)
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
 
+
 #  Visualisations exploratoires
 
-Cette étape permet de **comprendre la distribution et les relations** entre les variables clés du dataset crocodile.
+Cette étape permet de *comprendre la distribution et les relations* entre les variables clés du dataset crocodile.
 
 ---
 
@@ -570,7 +571,8 @@ sns.scatterplot(
 plt.title("Longueur vs Poids selon le statut de conservation")
 plt.show()
 
-```
+
+
 
 
 <img src="image07.png" width="400" style="display: block; margin: 0 auto;">
