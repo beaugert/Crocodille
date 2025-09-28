@@ -407,7 +407,7 @@ Nous utilisons des *boxplots* pour explorer comment les longueurs et poids obser
 ---
 
 ##  Code utilisé
-python
+```python
 # Distribution des longueurs par statut de conservation
 plt.figure(figsize=(12,5))
 sns.boxplot(x=data['Conservation Status'], y=data['Observed Length (m)'])
@@ -420,7 +420,7 @@ sns.boxplot(x=data['Conservation Status'], y=data['Observed Weight (kg)'])
 plt.title("Distribution des poids par statut de conservation")
 plt.show()
 
-
+```
 
 <img src="image003.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
@@ -438,7 +438,7 @@ Nous voulons prédire le *poids observé* (Observed Weight (kg)) des crocodiles 
 ---
 
 ##  Code utilisé
-python
+```python
 # Target pour régression
 target_col_reg = 'Observed Weight (kg)'
 X_reg = data.drop(target_col_reg, axis=1)
@@ -462,7 +462,7 @@ X_train_reg, X_test_reg, y_train_reg, y_test_reg = train_test_split(
 
 print("X_train_reg :", X_train_reg.shape, "X_test_reg :", X_test_reg.shape)
 
-
+```
 
 #  Modélisation de la régression
 
@@ -471,14 +471,14 @@ Nous utilisons un *Random Forest Regressor* pour prédire le *poids observé* de
 ---
 
 ##  Code utilisé
-python
+```python
 rf_reg = RandomForestRegressor(random_state=42)
 rf_reg.fit(X_train_reg, y_train_reg)
 
 # Prédictions
 y_pred_reg = rf_reg.predict(X_test_reg)
 
-
+```
 
 #  Évaluation du Random Forest Regressor
 
@@ -487,7 +487,7 @@ Nous évaluons les performances du modèle de régression en utilisant *RMSE* et
 ---
 
 ##  Code utilisé
-python
+```python
 from sklearn.metrics import mean_squared_error, r2_score, root_mean_squared_error
 
 # Calcul du RMSE et R²
@@ -497,7 +497,7 @@ r2 = r2_score(y_test_reg, y_pred_reg)
 print("RMSE :", rmse)
 print("R² :", r2)
 
-
+```
 
 #  Importance des variables - Random Forest Regressor
 
@@ -506,7 +506,7 @@ Cette section permet de comprendre quelles variables ont le plus d’influence s
 ---
 
 ##  Code utilisé
-python
+```python
 importances_reg = rf_reg.feature_importances_
 features_reg = X_train_reg.columns
 
@@ -522,7 +522,7 @@ plt.xlabel("Importance")
 plt.ylabel("Variables")
 plt.show()
 
-
+```
 
 <img src="image04.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
@@ -537,7 +537,7 @@ Cette section montre **comment chaque variable influence les prédictions** du m
 ---
 
 ##  Code utilisé
-python
+```python
 import shap
 
 # Création de l'explainer
@@ -550,7 +550,7 @@ shap.summary_plot(shap_values, X_test_reg, plot_type="bar")
 # Visualisation détaillée (summary plot classique)
 shap.summary_plot(shap_values, X_test_reg)
 
-
+```
 
 <img src="image05.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
@@ -569,7 +569,7 @@ Cette étape permet de *comprendre la distribution et les relations* entre les v
 
 ## Longueur vs Poids selon le statut de conservation
 
-python
+```python
 plt.figure(figsize=(12,5))
 sns.scatterplot(
     x=data['Observed Length (m)'], 
@@ -580,7 +580,7 @@ plt.title("Longueur vs Poids selon le statut de conservation")
 plt.show()
 
 
-
+```
 
 
 <img src="image07.png" width="400" style="display: block; margin: 0 auto;">
