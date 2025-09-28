@@ -120,7 +120,7 @@ Le code commence par importer toutes les bibliothèques nécessaires pour :
   - mean_squared_error (MSE)  
   - r2_score (coefficient de détermination)
 
- python
+ ```python
 # =========================
 # Import des librairies
 # =========================
@@ -136,6 +136,8 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report, mean_squared_error, r2_score
 
+```
+
 
 
 #  Lecture du dataset
@@ -145,13 +147,14 @@ Le code permet de charger et d’avoir un premier aperçu des données.
 ---
 
 ##  1. Chargement du dataset
-python
+```python
 # =========================
 data = pd.read_csv("crocodile_dataset.csv")
 
 # Affichage des premières lignes
 data.head(10)
 
+```
 
 
 #  Nettoyage des doublons
