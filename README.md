@@ -77,7 +77,7 @@ Cette étape vise à préparer le dataset pour la modélisation supervisée et n
 
 Cette préparation garantit que les modèles de classification, régression, clustering et analyses avancées puissent être appliqués efficacement et produire des résultats fiables et interprétables.
 
-# 📌 Résumé du code d'importation des bibliothèques
+#  Résumé du code d'importation des bibliothèques
 
 Le code commence par importer toutes les bibliothèques nécessaires pour :
 
@@ -586,3 +586,4 @@ plt.show()
 <img src="image07.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
+ 
